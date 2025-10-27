@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone 13 Pro Max - Showcase</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <style>
+        :root {
+            --alpine-green: #334f3a;
+            --gold: gold;
+            --silver: silver;
+            --sierra-blue: #586a8a;
+            --graphite: #4a4a4a;
+            --text-color: #0d6efd;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f5f5f7;
+        }
+
+        .color-selector input[type="radio"] {
+            display: none;
+        }
+
+        .color-dot {
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            display: inline-block;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+
+        .color-selector input[type="radio"]:checked+label {
+            border-color: var(--text-color);
+            box-shadow: 0 0 5px rgba(13, 110, 253, 0.6);
+        }
+
+        .product-image-display {
+            position: relative;
+            height: 400px;
+            margin-top: 50px;
+        }
+
+        .product-image-display img {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            max-height: 380px;
+            opacity: 0;
+            transition: opacity 0.5s;
+            z-index: 1;
+        }
+
+        #alpine-green:checked~.product-image-display #img-alpine-green,
+        #gold:checked~.product-image-display #img-gold,
+        #silver:checked~.product-image-display #img-silver,
+        #sierra-blue:checked~.product-image-display #img-sierra-blue,
+        #graphite:checked~.product-image-display #img-graphite {
+            opacity: 1;
+        }
+
+        .color-name {
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            text-align: center;
+            font-weight: 600;
+            color: #222;
+            font-size: 1.2rem;
+            opacity: 0;
+            transition: opacity 0.5s;
+            z-index: 2;
+        }
+
+        #alpine-green:checked~.product-image-display #name-alpine-green,
+        #gold:checked~.product-image-display #name-gold,
+        #silver:checked~.product-image-display #name-silver,
+        #sierra-blue:checked~.product-image-display #name-sierra-blue,
+        #graphite:checked~.product-image-display #name-graphite {
+            opacity: 1;
+        }
+
+        .storage-options label {
+            border: 2px solid #dee2e6;
+            border-radius: 12px;
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+            min-width: 110px;
+            text-align: center;
+        }
+
+        .storage-options input[type="radio"] {
+            display: none;
+        }
+
+        .storage-options input[type="radio"]:checked+label {
+            border-color: var(--text-color);
+            background-color: #e7f1ff;
+            color: var(--text-color);
+            box-shadow: 0 0 10px rgba(13, 110, 253, 0.2);
+        }
+
+        /* SPECS */
+        .spec-item {
+            display: flex;
+            align-items: start;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .spec-item i {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            margin-right: 1rem;
+        }
+
+        /* PRICE SWITCH */
+        .price-box span {
+            display: none;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #000;
+        }
+
+        #gb128:checked~.price-box #price128,
+        #gb256:checked~.price-box #price256,
+        #gb512:checked~.price-box #price512,
+        #gb1tb:checked~.price-box #price1tb {
+            display: block;
+        }
+
+        footer {
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
+        <div class="container-fluid">
+            <img src="applelogo.png" alt="Apple Logo" height="30" class="me-2">
+            <a class="navbar-brand fw-bold" href="#">iPhone 13 Pro Max</a>
+            <button class="btn btn-primary fw-bold ms-auto">Buy Now</button>
+        </div>
+    </nav>
+
+    <main class="container py-5 my-md-5">
+        <div class="bg-white p-4 p-md-5 rounded shadow mx-auto" style="max-width: 1000px;">
+
+            <div class="d-flex justify-content-between align-items-center mb-5 pb-3 border-bottom">
+                <div>
+                    <span class="text-uppercase fw-semibold text-success small">Pro Grade</span>
+                    <h1 class="display-5 fw-bolder mb-0">iPhone 13 Pro Max</h1>
+                    <p class="text-muted lead mb-0">The most powerful iPhone experience.</p>
+                </div>
+
+                <div class="price-box text-end">
+                    <span id="price128">₱68,990</span>
+                    <span id="price256">₱74,990</span>
+                    <span id="price512">₱82,990</span>
+                    <span id="price1tb">₱95,990</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-5 text-center color-selector position-relative">
+
+                    <input type="radio" id="alpine-green" name="color" checked>
+                    <input type="radio" id="gold" name="color">
+                    <input type="radio" id="silver" name="color">
+                    <input type="radio" id="sierra-blue" name="color">
+                    <input type="radio" id="graphite" name="color">
+
+                    <div class="product-image-display">
+                        <div id="name-alpine-green" class="color-name">Alpine Green</div>
+                        <div id="name-gold" class="color-name">Gold</div>
+                        <div id="name-silver" class="color-name">Silver</div>
+                        <div id="name-sierra-blue" class="color-name">Sierra Blue</div>
+                        <div id="name-graphite" class="color-name">Graphite</div>
+
+                        <img id="img-alpine-green" src="Alpine Green.jpg" alt="Alpine Green">
+                        <img id="img-gold" src="Gold.jpg" alt="Gold">
+                        <img id="img-silver" src="Silver.jpg" alt="Silver">
+                        <img id="img-sierra-blue" src="Sierra Blue.jpg" alt="Sierra Blue">
+                        <img id="img-graphite" src="Graphite.jpg" alt="Graphite">
+                    </div>
+
+                    <div class="mt-4">
+                        <div class="d-flex justify-content-center gap-3 mt-3">
+                            <label for="alpine-green" class="color-dot"
+                                style="background-color: var(--alpine-green);"></label>
+                            <label for="gold" class="color-dot" style="background-color: var(--gold);"></label>
+                            <label for="silver" class="color-dot" style="background-color: var(--silver);"></label>
+                            <label for="sierra-blue" class="color-dot"
+                                style="background-color: var(--sierra-blue);"></label>
+                            <label for="graphite" class="color-dot" style="background-color: var(--graphite);"></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-7">
+
+                    <!-- SPECS -->
+                    <div class="spec-item">
+                        <i class="bi bi-arrows-fullscreen"></i>
+                        <div>
+                            <p class="fw-semibold mb-1">Display</p>
+                            <p class="text-muted small mb-0">6.7-inch Super Retina XDR OLED with ProMotion 120Hz,
+                                2778×1284 resolution.</p>
+                        </div>
+                    </div>
+
+                    <div class="spec-item">
+                        <i class="bi bi-cpu-fill"></i>
+                        <div>
+                            <p class="fw-semibold mb-1">Chip</p>
+                            <p class="text-muted small mb-0">A15 Bionic with 6-core CPU, 5-core GPU, and 16-core Neural
+                                Engine.</p>
+                        </div>
+                    </div>
+
+                    <div class="spec-item">
+                        <i class="bi bi-camera-reels-fill"></i>
+                        <div>
+                            <p class="fw-semibold mb-1">Camera System</p>
+                            <p class="text-muted small mb-0">Triple 12MP (Wide, Ultra Wide, Telephoto), with LiDAR,
+                                Night mode, and ProRAW.</p>
+                        </div>
+                    </div>
+
+                    <div class="spec-item">
+                        <i class="bi bi-battery-full"></i>
+                        <div>
+                            <p class="fw-semibold mb-1">Battery</p>
+                            <p class="text-muted small mb-0">4352 mAh; up to 28 hours video playback; supports MagSafe
+                                charging.</p>
+                        </div>
+                    </div>
+
+                    <div class="spec-item">
+                        <i class="bi bi-broadcast-pin"></i>
+                        <div>
+                            <p class="fw-semibold mb-1">Connectivity</p>
+                            <p class="text-muted small mb-0">5G, Wi-Fi 6, Bluetooth 5.0, NFC, Dual SIM (nano-SIM +
+                                eSIM).</p>
+                        </div>
+                    </div>
+
+                    <div class="spec-item">
+                        <i class="bi bi-shield-lock-fill"></i>
+                        <div>
+                            <p class="fw-semibold mb-1">Durability</p>
+                            <p class="text-muted small mb-0">Ceramic Shield front, matte glass back, stainless steel
+                                frame, IP68 rating.</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <p class="fw-semibold mb-2">Select Storage</p>
+                        <div class="storage-options d-flex flex-wrap gap-3">
+                            <input type="radio" name="storage" id="gb128" checked>
+                            <label for="gb128">128GB</label>
+
+                            <input type="radio" name="storage" id="gb256">
+                            <label for="gb256">256GB</label>
+
+                            <input type="radio" name="storage" id="gb512">
+                            <label for="gb512">512GB</label>
+
+                            <input type="radio" name="storage" id="gb1tb">
+                            <label for="gb1tb">1TB</label>
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2 mt-5">
+                        <button class="btn btn-primary btn-lg fw-bold">Buy Now</button>
+                        <a href="#" class="btn btn-outline-secondary btn-lg">View Full Technical Specs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center py-3 border-top small">
+        <p class="mb-0 text-muted">&copy; 2025 iPhone 13 Pro Max Showcase | Designed with Bootstrap</p>
+    </footer>
+
+</body>
+
+</html>
